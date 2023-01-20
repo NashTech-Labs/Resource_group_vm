@@ -1,0 +1,24 @@
+pwsh
+
+
+Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+Update-Module -Name Az
+
+Connect-AzAccount
+
+New-AzResourceGroup -Name 'vmresource' -Location 'EastUS'
+
+
+
+
+New-AzVm `
+    -ResourceGroupName 'myResourceGroup' `
+    -Name 'myVM' `
+    -Location 'East US' `
+    -VirtualNetworkName 'myVnet' `
+    -SubnetName 'mySubnet' `
+    -SecurityGroupName 'myNetworkSecurityGroup' `
+    -PublicIpAddressName 'myPublicIpAddress' `
+    -OpenPorts 80,3389       # According to your need provide the ports.
+
+Get-AZVM
